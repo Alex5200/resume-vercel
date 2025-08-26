@@ -24,7 +24,13 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
-
+interface NavItem {
+    label: string;
+    href: string;
+}
+interface ItemTool {
+    label: string;
+}
 export const Navbar = () => {
   const searchInput = (
     <Input
@@ -61,7 +67,7 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {siteConfig.navItems.map((item: NavItem) => (
             <NavbarItem key={item.href}>
               <Link
                 className={clsx(
@@ -120,7 +126,7 @@ export const Navbar = () => {
       <NavbarMenu>
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
+          {siteConfig.navMenuItems.map((item: ItemTool, index: number) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
                 color={
