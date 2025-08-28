@@ -25,11 +25,11 @@ import {
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
 interface NavItem {
-    label: string;
-    href: string;
+  label: string;
+  href: string;
 }
 interface ItemTool {
-    label: string;
+  label: string;
 }
 export const Navbar = () => {
   const searchInput = (

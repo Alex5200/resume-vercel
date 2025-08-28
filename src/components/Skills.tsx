@@ -41,13 +41,13 @@ const Skills = () => {
             return (
               <motion.div
                 key={index}
+                animate={{ scale: [1, 1.03, 1] }}
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
                 initial={{ opacity: 0, y: 20 }}
                 transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileInView={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.03 }}
-                animate={{ scale: [1, 1.03, 1] }}
+                whileInView={{ opacity: 1, y: 0 }}
               >
                 <div className="flex items-center mb-6">
                   {index === 0 && (

@@ -38,21 +38,20 @@ const Hero = () => {
 
           <div className="flex flex-wrap gap-4">
             <motion.a
+              animate={{ y: [null, 30, 0] }}
               className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
               href="#projects"
-              whileHover={{ y: -3 , scale: 1.5}}
-              animate={{ y: [null, 30, 0] }}
+              whileHover={{ y: -3, scale: 1.5 }}
             >
               Мои проекты
             </motion.a>
             <motion.a
+              animate={{ x: [null, 30, 20] }}
               className="px-6 py-3 border-2 border-gray-300 dark:border-gray-700 hover:border-purple-600 dark:hover:border-purple-400 rounded-lg font-medium transition-colors flex items-center"
               href="https://github.com/alex5200"
               rel="noopener noreferrer"
               target="_blank"
-              whileHover={{ y: -3 , scale: 1.5 }}
-              animate={{ x: [null, 30, 20] }}
-
+              whileHover={{ y: -3, scale: 1.5 }}
             >
               <GlobeAsiaAustraliaIcon className="w-5 h-5 mr-2" /> GitHub
             </motion.a>

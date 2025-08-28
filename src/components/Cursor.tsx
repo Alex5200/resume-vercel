@@ -1,11 +1,22 @@
-import React, { useEffect, useRef } from 'react';
-import '../styles/Cursor.css';
+import { useEffect, useRef } from "react";
+import "../styles/Cursor.css";
 
-const Cursor = () => {
-  const cursorRef = useRef(null);
+interface clientMouse{
+    clientX: number;
+    clientY: number;
+}
+interface CursorProps {
+    classList?: {
+        add: (className: string) => void;
+        remove: (className: string) => void;
+    };
+}
+const Cursor: React.FC<CursorProps> = () => {
+  const cursorRef = useRef<HTMLDivElement>(null); // Указываем тип
 
   useEffect(() => {
     const cursor = cursorRef.current;
+    if (!cursor) return;
 
     // Плавное движение
     let currentX = 0;
@@ -13,7 +24,7 @@ const Cursor = () => {
     let targetX = 0;
     let targetY = 0;
 
-    const lerp = (start, end, t) => start * (1 - t) + end * t;
+    const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
 
     const animate = () => {
       currentX = lerp(currentX, targetX, 0.2);
@@ -26,31 +37,31 @@ const Cursor = () => {
 
     animate();
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: clientMouse) => {
       targetX = e.clientX - 25; // центрируем (50x50 → -25)
       targetY = e.clientY - 25;
     };
 
     const handleMouseDown = () => {
-      cursor.classList.add('pressed');
+      cursor.classList.add("pressed");
     };
 
     const handleMouseUp = () => {
-      cursor.classList.remove('pressed');
+      cursor.classList.remove("pressed");
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
   }, []);
 
-  return <div className="ios-cursor" ref={cursorRef}></div>;
+  return <div ref={cursorRef} className="ios-cursor" />;
 };
 
 export default Cursor;
