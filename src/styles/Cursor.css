@@ -1,0 +1,43 @@
+/* Cursor.css */
+
+* {
+  cursor: none; /* скрываем стандартный курсор */
+}
+
+.ios-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  /* Заменяем background на градиент */
+  background: linear-gradient(135deg, #94b99c 0%, #239657 100%);
+  background-size: 200% 200%;
+  animation: cursor-gradient 2.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.05s ease-out;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes cursor-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Эффект нажатия — как при касании на iOS */
+.ios-cursor.pressed {
+  background: rgba(0, 0, 0, 0.3);
+  transform: translate(-50%, -50%) scale(0.85);
+}
+
+/* На тач-устройствах можно добавить touch-effect, но это уже другая тема */

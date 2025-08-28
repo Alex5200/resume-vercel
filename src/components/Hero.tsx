@@ -14,7 +14,7 @@ const Hero = () => {
         <motion.div
           animate={{ opacity: 1, y: 0 }}
           className="max-w-3xl"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0.1, y: 30, x: -10 }}
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -40,7 +40,8 @@ const Hero = () => {
             <motion.a
               className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-colors"
               href="#projects"
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -3 , scale: 1.5}}
+              animate={{ y: [null, 30, 0] }}
             >
               Мои проекты
             </motion.a>
@@ -49,7 +50,9 @@ const Hero = () => {
               href="https://github.com/alex5200"
               rel="noopener noreferrer"
               target="_blank"
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -3 , scale: 1.5 }}
+              animate={{ x: [null, 30, 20] }}
+
             >
               <GlobeAsiaAustraliaIcon className="w-5 h-5 mr-2" /> GitHub
             </motion.a>
